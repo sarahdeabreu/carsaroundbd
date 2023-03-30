@@ -1,0 +1,47 @@
+create database CARSAROUND;
+use CARSAROUND;
+
+create table proprietario(
+idprop int not null,
+nome	varchar (40) not null,
+telefone int not null
+);
+
+insert into proprietario values (1,'Coraline',14999847333);
+insert into proprietario values (2,'Julian',14999847444);
+insert into proprietario values (3,'Soares',14999847555);
+select * from proprietario;
+
+create table carro(
+idcar int not null,
+carro	varchar (40) not null,
+preco decimal (9,2)
+);
+
+insert into carro values (10,'Tesla','6.800.900');
+insert into carro values (20,'LaFerrari','7.840.420,00');
+insert into carro values (30,'McLaren','9.520.510,00');
+select * from carro;
+
+create table garagem(
+idgar int not null,
+idprop int not null,
+idcar int not null
+);
+
+insert garagem values(1, 10);
+insert garagem values(2, 20);
+insert garagem values(3, 30);
+
+select * from garagem;
+select carro.carro, proprietario.nome
+from garagem, carro, proprietario
+where garagem.idcar = carro.idcar and garagem.idprop = proprietario.idprop;
+
+select carro.carro, carro.preco, proprietario.nome
+from garagem, carro, proprietario
+where garagem.idcar = carro.idcar and garagem.idprop = proprietario.idprop;
+
+select carro.carro, proprietario.nome, proprietario.telefone
+from garagem, carro, proprietario
+where garagem.idcar = carro.idcar and garagem.idprop = proprietario.idprop;
